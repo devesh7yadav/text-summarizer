@@ -1,8 +1,8 @@
 //Starts the app
-
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import routes from "./routes.js"
 
 dotenv.config();
 
@@ -12,6 +12,8 @@ const corsOptions = {origin: "*"}
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+app.use("/summarize", routes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
