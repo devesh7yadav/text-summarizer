@@ -8,7 +8,7 @@ function MainPage() {
         type: "",
         length: ""
     });
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState("---");
 
     const handleChange = (e) => {
         setFormData(e.target.value);
@@ -45,62 +45,70 @@ function MainPage() {
 
     //Resets the textboxes
     const handleReset = () => {
-        setFormData("");
-        setResult("");
+        setFormData({
+            text: "",
+            type: "",
+            length: ""
+        });
+        setResult("---");
     }
 
     return (
-      <div className="grid grid-cols-1">
+      <div className="grid place-items-center px-6">
 
         <h1>Text Summarizer</h1>
-        <h3>Paste your text and wait for the AI to summarize it</h3>
-        
-        <div className="border">
-            <form onSubmit={handleSubmit} onReset={handleReset}>
-                <div>
+        <h3>Paste your text or start writing to let AI summarize it</h3>
+            
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 my-6">
+
+            <div className="grid max-h-128">
+                <form onSubmit={handleSubmit} onReset={handleReset} className="grid grid-cols-1 border p-6 gap-y-6">
+
                     <textarea 
+                        className="p-3 border resize-none"
                         id="input"
                         value={formData.text}
                         onChange={handleChange}
                         rows={10}
-                        cols={50}
-                        placeholder="Paste text here: "
+                        cols={60}
+                        placeholder="Paste or Type: "
                     />
-                </div>
 
-                <select 
-                    name="type" 
-                    id="type"
-                >
-                    <option value="">Select Type</option>
-                    <option value="Paragraphs">Paragraph</option>
-                    <option value="Bullet Points">Bullet Points</option>
-                </select>
+                    <select 
+                        name="type" 
+                        id="type"
+                        className="border"
+                    >
+                        <option value="">Select Result Type</option>
+                        <option value="Paragraphs">Paragraph</option>
+                        <option value="Bullet Points">Bullet Points</option>
+                    </select>
 
-                <select 
-                    name="length" 
-                    id="length"
-                >
-                    <option value="">Select Length</option>
-                    <option value="Short">Short</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Long">Long</option>
-                </select>
+                    <select 
+                        name="length" 
+                        id="length"
+                        className="border"
+                    >
+                        <option value="">Select Result Length</option>
+                        <option value="Short">Short</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Long">Long</option>
+                    </select>
 
-            
-                <div>
-                    <button type="reset">Clear</button>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+                    <div className="grid grid-cols-[2fr_3fr] gap-6">
+                        <button type="reset" className="border">Clear</button>
+                        <button type="submit" className="border">Submit</button>
+                    </div>
 
+                </form>
+            </div>
 
-        <div className="border">
-            {result}
-        </div>
+            <div className="border h-128 p-6">
+                {result}
+            </div>
 
-      </div>  
+        </div>  
+      </div>
     )
 }
 
