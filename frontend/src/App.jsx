@@ -1,9 +1,7 @@
+import MainPage from "./MainPage"
+
 function App() {
-  
-  return(
-    <div>Frontend working</div>
-  )
-    
+  return <MainPage />
 }
 
 export default App
