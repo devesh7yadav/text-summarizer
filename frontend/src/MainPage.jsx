@@ -6,6 +6,10 @@ function MainPage() {
     const [text, setText] = useState("");
     const [result, setResult] = useState(null);
 
+    const handleChange = (e) => {
+        setText(e.target.value);
+    }
+
     //Handles the submit and sends to backend
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -13,24 +17,24 @@ function MainPage() {
         //Checks for a empty field
         if (text === ""){
             setResult("Please enter some text.")
+        } else{
+            const response = await fetch("http://localhost:5001/summarize", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    text,
+                })
+            });
+
+            const data = await response.json();
+
+            if(!response.ok) {
+                setResult(data.message);
+                return;
+            }
+
+            setResult(data.summary);
         }
-
-        const response = await fetch("http://localhost:5001/summarize", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                text,
-            })
-        });
-
-        const data = await response.json();
-
-        if(!response.ok) {
-            setResult(data.message);
-            return;
-        }
-
-        setResult(data.summary);
     }
 
     //Resets the textboxes
@@ -49,8 +53,9 @@ function MainPage() {
             <form onSubmit={handleSubmit} onReset={handleReset}>
                 <div>
                     <textarea 
+                        id="input"
                         value={text}
-                        onChange={(e) => setText(e.target.value)}
+                        onChange={handleChange}
                         rows={10}
                         cols={50}
                         placeholder="Paste text here: "
@@ -66,7 +71,7 @@ function MainPage() {
 
 
         <div>
-
+            {result}
         </div>
 
 
