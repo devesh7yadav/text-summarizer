@@ -13,6 +13,8 @@ const summarize = async (req, res) => {;
                     - Long = 3-5 paragraphs. 
 
                     If the format is bullet points: 
+                    - Return one bullet point per line.
+                    - Use - as a bullet point.
                     - Short = 3-5 bullets
                     - Medium = 5-8 bullets
                     - Long = 10+ bullets`
@@ -26,16 +28,16 @@ const summarize = async (req, res) => {;
 
     try {
         const interaction = await ai.interactions.create({
-        model: "gemini-3.5-flash",
-        input: prompt,
-    });
+            model: "gemini-3.5-flash",
+            input: prompt,
+        });
+
+        res.json({
+            summary: interaction.output_text
+        });
     } catch (error) {
         return res.status(500).json({message: "AI is not working right now, try again later"})
     }
-
-    res.json({
-        summary: interaction.output_text
-    });
 }
 
 export {summarize};

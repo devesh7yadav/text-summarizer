@@ -1,6 +1,7 @@
 //UI Colours
-#0E7488 - Stormy Teal --- Subtitle & Text Colour
+#0E7488 - Stormy Teal --- Subtite & Border Colour
 #C9AA22 - Metallic Gold --- Summarize Button Colour
-#222222 - Carbon Black --- Border Colour
-#EA7763 - Vibrant Coral --- Title Colour
+#222222 - Carbon Black --- Text Colour
+#2B54A1 - Dusk Blue --- Title Colour
 #BFD9D4 - Ash Grey --- Background Colour
+#9f9d9d - Grey --- Clear Button Colour

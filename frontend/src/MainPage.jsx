@@ -11,7 +11,12 @@ function MainPage() {
     const [result, setResult] = useState("---");
 
     const handleChange = (e) => {
-        setFormData(e.target.value);
+        const { name, value } = e.target;
+
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     }
 
     //Handles the submit and sends to backend
@@ -59,11 +64,12 @@ function MainPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 my-6">
 
             <div className="grid max-h-128">
-                <form onSubmit={handleSubmit} onReset={handleReset} className="grid grid-cols-1 border border-[#222222] p-6 gap-y-6 rounded-md shadow-lg">
+                <form onSubmit={handleSubmit} onReset={handleReset} className="grid grid-cols-1 border border-[#0E7488] p-6 gap-y-6 rounded-md shadow-lg">
 
                     <textarea 
-                        className="p-3 border border-[#222222] resize-none rounded-sm shadow-sm text-[#0E7488]"
-                        id="input"
+                        className="p-3 border border-[#0E7488] resize-none rounded-sm shadow-sm text-[#222222]"
+                        id="text"
+                        name="text"
                         value={formData.text}
                         onChange={handleChange}
                         rows={10}
@@ -74,7 +80,8 @@ function MainPage() {
                     <select 
                         name="type" 
                         id="type"
-                        className="border border-[#222222] rounded-sm shadow-sm px-3 text-[#0E7488] bg-[#BFD9D4]"
+                        onChange={handleChange}
+                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4]"
                     >
                         <option value="">Select Result Type</option>
                         <option value="Paragraphs">Paragraph</option>
@@ -84,7 +91,8 @@ function MainPage() {
                     <select 
                         name="length" 
                         id="length"
-                        className="border border-[#222222] rounded-sm shadow-sm px-3 text-[#0E7488] bg-[#BFD9D4]"
+                        onChange={handleChange}
+                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4]"
                     >
                         <option value="">Select Result Length</option>
                         <option value="Short">Short</option>
@@ -93,14 +101,14 @@ function MainPage() {
                     </select>
 
                     <div className="grid grid-cols-[2fr_3fr] gap-6">
-                        <button type="reset" className="border rounded-sm shadow-sm text-[#0E7488]">Clear</button>
+                        <button type="reset" className="rounded-sm shadow-sm text-[#222222] bg-[#9f9d9d]">Clear</button>
                         <button type="submit" className="rounded-sm shadow-sm text-[#222222] bg-[#C9AA22]">Summarize</button>
                     </div>
 
                 </form>
             </div>
 
-            <div className="border border-[#222222] h-128 p-6 rounded-lg shadow-md text-[#0E7488]">
+            <div className="border border-[#0E7488] h-128 p-6 rounded-lg shadow-md text-[#222222] whitespace-pre-wrap">
                 {result}
             </div>
 
