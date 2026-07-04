@@ -11,3 +11,30 @@ html, body, #root {
 body {
   background-color: #BFD9D4;
 }
+
+/*Scrollbar colour */
+textarea::-webkit-scrollbar {
+  background: #BFD9D4;
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background: #9f9d9d;
+  border-radius: 10px;
+}
+
+.output-box::-webkit-scrollbar {
+  width: 10px;
+}
+
+.output-box::-webkit-scrollbar {
+  background: #BFD9D4;
+}
+
+.output-box::-webkit-scrollbar-thumb {
+  background: #9f9d9d;
+  border-radius: 10px;
+}
+
+.output-box::-webkit-scrollbar {
+  width: 10px;
+}

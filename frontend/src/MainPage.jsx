@@ -9,6 +9,7 @@ function MainPage() {
         length: ""
     });
     const [result, setResult] = useState("---");
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -27,6 +28,7 @@ function MainPage() {
         if (formData.text === "" || formData.type === "" || formData.length === ""){
             setResult("Please fill all fields.")
         } else{
+            setLoading(true);
             const response = await fetch("http://localhost:5001/summarize", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -41,9 +43,11 @@ function MainPage() {
 
             if(!response.ok) {
                 setResult(data.message);
+                setLoading(false);
                 return;
             }
 
+            setLoading(false);
             setResult(data.summary);
         }
     }
@@ -67,7 +71,7 @@ function MainPage() {
                 <form onSubmit={handleSubmit} onReset={handleReset} className="grid grid-cols-1 border border-[#0E7488] p-6 gap-y-6 rounded-md shadow-lg">
 
                     <textarea 
-                        className="p-3 border border-[#0E7488] resize-none rounded-sm shadow-sm text-[#222222]"
+                        className="p-3 border border-[#0E7488] resize-none rounded-sm shadow-sm text-[#222222] focus:outline-none focus:ring-2 focus:ring-[#0E7488]"
                         id="text"
                         name="text"
                         value={formData.text}
@@ -81,7 +85,7 @@ function MainPage() {
                         name="type" 
                         id="type"
                         onChange={handleChange}
-                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4]"
+                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4] focus:outline-none focus:ring-2 focus:ring-[#0E7488]"
                     >
                         <option value="">Select Result Type</option>
                         <option value="Paragraphs">Paragraph</option>
@@ -92,7 +96,7 @@ function MainPage() {
                         name="length" 
                         id="length"
                         onChange={handleChange}
-                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4]"
+                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4] focus:outline-none focus:ring-2 focus:ring-[#0E7488]"
                     >
                         <option value="">Select Result Length</option>
                         <option value="Short">Short</option>
@@ -101,15 +105,15 @@ function MainPage() {
                     </select>
 
                     <div className="grid grid-cols-[2fr_3fr] gap-6">
-                        <button type="reset" className="rounded-sm shadow-sm text-[#222222] bg-[#9f9d9d]">Clear</button>
-                        <button type="submit" className="rounded-sm shadow-sm text-[#222222] bg-[#C9AA22]">Summarize</button>
+                        <button type="reset" className="rounded-sm shadow-sm text-[#222222] bg-[#9f9d9d] hover:text-[#BFD9D4]">Clear</button>
+                        <button type="submit" className="rounded-sm shadow-sm text-[#222222] bg-[#C9AA22] hover:text-[#BFD9D4]">Summarize</button>
                     </div>
 
                 </form>
             </div>
 
-            <div className="border border-[#0E7488] h-128 p-6 rounded-lg shadow-md text-[#222222] whitespace-pre-wrap">
-                {result}
+            <div className="output-box border border-[#0E7488] h-128 overflow-y-auto p-6 rounded-lg shadow-md text-[#222222] whitespace-pre-wrap">
+                 {loading ? "Loading..." : result}
             </div>
 
         </div>  

@@ -4,4 +4,4 @@
 #222222 - Carbon Black --- Text Colour
 #2B54A1 - Dusk Blue --- Title Colour
 #BFD9D4 - Ash Grey --- Background Colour
-#9f9d9d - Grey --- Clear Button Colour
+#9f9d9d - Grey --- Clear Button & Scrollbar Colour
