@@ -3,5 +3,5 @@
 #C9AA22 - Metallic Gold --- Summarize Button Colour
 #222222 - Carbon Black --- Text Colour
 #2B54A1 - Dusk Blue --- Title Colour
-#BFD9D4 - Ash Grey --- Background Colour
+#BFD9D4 - Ash Grey --- Background & Hover Colour
 #9f9d9d - Grey --- Clear Button & Scrollbar Colour

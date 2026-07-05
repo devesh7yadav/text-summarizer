@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { LuCopy, LuCopyCheck } from "react-icons/lu";
+
 
 function MainPage() {
 
@@ -9,7 +11,8 @@ function MainPage() {
         length: ""
     });
     const [result, setResult] = useState("---");
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isCopied, setIsCopied] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -28,7 +31,7 @@ function MainPage() {
         if (formData.text === "" || formData.type === "" || formData.length === ""){
             setResult("Please fill all fields.")
         } else{
-            setLoading(true);
+            setIsLoading(true);
             const response = await fetch("http://localhost:5001/summarize", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -43,11 +46,11 @@ function MainPage() {
 
             if(!response.ok) {
                 setResult(data.message);
-                setLoading(false);
+                setIsLoading(false);
                 return;
             }
 
-            setLoading(false);
+            setIsLoading(false);
             setResult(data.summary);
         }
     }
@@ -60,6 +63,14 @@ function MainPage() {
             length: ""
         });
         setResult("---");
+    }
+
+    //Copies to clipboard
+    const handleCopy = async () => {
+        await navigator.clipboard.writeText(result);
+        setIsCopied(true);
+
+        setTimeout(() => setIsCopied(false), 3000);
     }
 
     return (
@@ -112,8 +123,26 @@ function MainPage() {
                 </form>
             </div>
 
-            <div className="output-box border border-[#0E7488] h-128 overflow-y-auto p-6 rounded-lg shadow-md text-[#222222] whitespace-pre-wrap">
-                 {loading ? "Loading..." : result}
+            <div className="grid grid-rows-[12fr_1fr] max-h-128 border border-[#0E7488] rounded-lg shadow-md">
+
+                <div className="output-box border-b border-b-[#0E7488] overflow-y-auto p-6 rounded-lg shadow-sm text-[#222222] whitespace-pre-wrap">
+                    {isLoading ? "Loading..." : result}
+                </div>
+
+                <button onClick={handleCopy} className="flex items-center justify-center gap-2 w-full">
+                    {isCopied ? (
+                        <>
+                            Copied! 
+                            <LuCopyCheck color="green" />
+                        </>
+                        ) : (
+                        <>
+                            Copy 
+                            <LuCopy />
+                        </>
+                    )}
+                </button>
+
             </div>
 
         </div>  
