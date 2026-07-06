@@ -9,16 +9,16 @@ html, body, #root {
 }
 
 body {
-  background-color: #BFD9D4;
+  background-color: #edf3f2;
 }
 
 /*Scrollbar colour */
 textarea::-webkit-scrollbar {
-  background: #BFD9D4;
+  background: #d1dfdc;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background: #9f9d9d;
+  background: #b6b2b2;
   border-radius: 10px;
 }
 
@@ -27,11 +27,11 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .output-box::-webkit-scrollbar {
-  background: #BFD9D4;
+  background: #d1dfdc;
 }
 
 .output-box::-webkit-scrollbar-thumb {
-  background: #9f9d9d;
+  background: #b6b2b2;
   border-radius: 10px;
 }
 

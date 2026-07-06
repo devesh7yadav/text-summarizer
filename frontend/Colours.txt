@@ -1,7 +1,8 @@
 //UI Colours
-#0E7488 - Stormy Teal --- Subtite & Border Colour
-#C9AA22 - Metallic Gold --- Summarize Button Colour
-#222222 - Carbon Black --- Text Colour
-#2B54A1 - Dusk Blue --- Title Colour
-#BFD9D4 - Ash Grey --- Background & Hover Colour
-#9f9d9d - Grey --- Clear Button & Scrollbar Colour
+#0E7488 - Stormy Teal --- Subtitle & Border 
+#C9AA22 - Metallic Gold --- Summarize Button 
+#222222 - Carbon Black --- Text 
+#2B54A1 - Dusk Blue --- Title & Dropdown/Copy Hover 
+#edf6f4 - White --- Button Hover 
+#b6b2b2 - Grey --- Clear Button & Scrollbar 
+#edf3f2 - Light Grey --- Background 

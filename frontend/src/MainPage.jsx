@@ -14,6 +14,7 @@ function MainPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [isCopied, setIsCopied] = useState(false);
 
+    //Updates everything
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -55,7 +56,7 @@ function MainPage() {
         }
     }
 
-    //Resets the textboxes
+    //Resets everything
     const handleReset = () => {
         setFormData({
             text: "",
@@ -78,11 +79,11 @@ function MainPage() {
             
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 my-6">
 
-            <div className="grid max-h-128">
-                <form onSubmit={handleSubmit} onReset={handleReset} className="grid grid-cols-1 border border-[#0E7488] p-6 gap-y-6 rounded-md shadow-lg">
+            <div className="grid max-h-256">
+                <form onSubmit={handleSubmit} onReset={handleReset} className="grid grid-cols-1 h-full border border-[#0E7488] p-6 gap-y-8 rounded-lg shadow-xl">
 
                     <textarea 
-                        className="p-3 border border-[#0E7488] resize-none rounded-sm shadow-sm text-[#222222] focus:outline-none focus:ring-2 focus:ring-[#0E7488]"
+                        className="p-3 border border-[#0E7488] bg-[#d1dfdc] resize-none rounded-sm shadow-sm text-[#222222] focus:outline-none focus:ring-2 focus:ring-[#0E7488]"
                         id="text"
                         name="text"
                         value={formData.text}
@@ -92,44 +93,50 @@ function MainPage() {
                         placeholder="Paste or Type: "
                     />
 
-                    <select 
-                        name="type" 
-                        id="type"
-                        onChange={handleChange}
-                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4] focus:outline-none focus:ring-2 focus:ring-[#0E7488]"
-                    >
-                        <option value="">Select Result Type</option>
-                        <option value="Paragraphs">Paragraph</option>
-                        <option value="Bullet Points">Bullet Points</option>
-                    </select>
+                    <div className="flex items-center">
+                        <label className="w-12 text-sm md:text-base text-[#222222] mr-4">Type:</label>
+                        <select 
+                            name="type" 
+                            id="type"
+                            onChange={handleChange}
+                            className="h-10 flex-1 border border-[#0E7488] text-sm md:text-base rounded-md shadow-md px-3 text-[#222222] bg-[#d1dfdc] focus:outline-none focus:ring-2 focus:ring-[#0E7488] hover:text-[#2B54A1]"
+                        >
+                            <option value="">Select</option>
+                            <option value="Paragraphs">Paragraph</option>
+                            <option value="Bullet Points">Bullet Points</option>
+                        </select>
+                    </div>
 
-                    <select 
-                        name="length" 
-                        id="length"
-                        onChange={handleChange}
-                        className="border border-[#0E7488] rounded-sm shadow-sm px-3 text-[#222222] bg-[#BFD9D4] focus:outline-none focus:ring-2 focus:ring-[#0E7488]"
-                    >
-                        <option value="">Select Result Length</option>
-                        <option value="Short">Short</option>
-                        <option value="Medium">Medium</option>
-                        <option value="Long">Long</option>
-                    </select>
+                    <div className="flex items-center">
+                        <label className="w-12 text-sm md:text-base text-[#222222] mr-4">Length:</label>
+                        <select 
+                            name="length" 
+                            id="length"
+                            onChange={handleChange}
+                            className="h-10 flex-1 border border-[#0E7488] text-sm md:text-base rounded-md shadow-md px-3 text-[#222222] bg-[#d1dfdc] focus:outline-none focus:ring-2 focus:ring-[#0E7488] hover:text-[#2B54A1]"
+                        >
+                            <option value="">Select</option>
+                            <option value="Short">Short</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Long">Long</option>
+                        </select>
+                    </div>
 
-                    <div className="grid grid-cols-[2fr_3fr] gap-6">
-                        <button type="reset" className="rounded-sm shadow-sm text-[#222222] bg-[#9f9d9d] hover:text-[#BFD9D4]">Clear</button>
-                        <button type="submit" className="rounded-sm shadow-sm text-[#222222] bg-[#C9AA22] hover:text-[#BFD9D4]">Summarize</button>
+                    <div className="grid grid-cols-[2fr_3fr] gap-6 h-10">
+                        <button type="reset" className="rounded-md shadow-xl text-sm md:text-base text-[#222222] bg-[#b6b2b2] hover:text-[#edf6f4] hover:font-bold">Clear</button>
+                        <button type="submit" className="rounded-md shadow-xl text-sm md:text-base text-[#222222] bg-[#C9AA22] hover:text-[#edf6f4] hover:font-bold">Summarize</button>
                     </div>
 
                 </form>
             </div>
 
-            <div className="grid grid-rows-[12fr_1fr] max-h-128 border border-[#0E7488] rounded-lg shadow-md">
+            <div className="grid grid-rows-[12fr_1fr] h-full max-h-256 border border-[#0E7488] rounded-lg shadow-xl">
 
-                <div className="output-box border-b border-b-[#0E7488] overflow-y-auto p-6 rounded-lg shadow-sm text-[#222222] whitespace-pre-wrap">
+                <div className="output-box border-b border-b-[#0E7488] overflow-y-auto p-6 rounded-sm shadow-lg text-[#222222] whitespace-pre-wrap">
                     {isLoading ? "Loading..." : result}
                 </div>
 
-                <button onClick={handleCopy} className="flex items-center justify-center gap-2 w-full">
+                <button onClick={handleCopy} className="flex items-center justify-center gap-2 w-full bg-[#d1dfdc] rounded-lg shadow-xl hover:text-[#2B54A1] hover:font-bold">
                     {isCopied ? (
                         <>
                             Copied! 
