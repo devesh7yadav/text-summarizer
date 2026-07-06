@@ -36,7 +36,7 @@ const summarize = async (req, res) => {;
             summary: interaction.output_text
         });
     } catch (error) {
-        return res.status(500).json({message: "AI is not working right now, try again later"})
+        return res.status(500).json({message: "AI is currently not working, try again later."})
     }
 }
 
