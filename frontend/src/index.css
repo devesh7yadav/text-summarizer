@@ -38,3 +38,8 @@ textarea::-webkit-scrollbar-thumb {
 .output-box::-webkit-scrollbar {
   width: 10px;
 }
+
+.output-box::-webkit-scrollbar-track {
+    background: #edf3f2;
+    border-radius: 10px;
+}

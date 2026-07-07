@@ -6,4 +6,4 @@
 #edf6f4 - White --- Button Hover 
 #b6b2b2 - Grey --- Clear Button & Scrollbar 
 #edf3f2 - Light Grey --- Background 
-#d1dfdc - Light Blue --- Input & Copy background
+#d1dfdc - Light Blue --- Input & Copy/Exoprt Button background
