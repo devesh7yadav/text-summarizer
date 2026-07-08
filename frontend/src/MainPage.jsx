@@ -189,7 +189,7 @@ function MainPage() {
                 </div>
 
                 <div className="grid grid-cols-2">
-                    <button onClick={handleCopy} className="flex items-center justify-center gap-2 w-full bg-[#d1dfdc] rounded-bl-xl shadow-xl cursor-pointer hover:text-[#2B54A1] hover:font-bold">
+                    <button onClick={handleCopy} className="flex items-center justify-center gap-2 w-full text-sm md:text-base bg-[#d1dfdc] rounded-bl-xl shadow-xl cursor-pointer hover:text-[#2B54A1] hover:font-bold">
                         {isCopied ? (
                             <>
                                 Copied! 
@@ -203,7 +203,7 @@ function MainPage() {
                         )}
                     </button>
 
-                    <button onClick={handleExport} className="flex items-center justify-center gap-2 w-full bg-[#d1dfdc] rounded-br-xl border-l shadow-xl cursor-pointer hover:text-[#2B54A1] hover:font-bold">
+                    <button onClick={handleExport} className="flex items-center justify-center gap-2 w-full text-sm md:text-base bg-[#d1dfdc] rounded-br-xl border-l shadow-xl cursor-pointer hover:text-[#2B54A1] hover:font-bold">
                         {isExported ? (
                             <>
                                 Exported! 
