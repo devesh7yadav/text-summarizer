@@ -3,6 +3,9 @@ An AI text summarizer that uses Google's Gemini API to summarize pasted or typed
 
 Note: There is a daily limit on the number of requests due to usage limitations set by Google.
 
+## Website
+[Live Link](https://student-text-summarizer.vercel.app/)
+
 ## Demo
 
 ![Screenshot](./media/screenshot.png)
