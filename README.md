@@ -1,6 +1,8 @@
 # AI Text Summarizer
 An AI text summarizer that uses Google's Gemini API to summarize pasted or typed text. Users can choose the summary format and length. The website is responsive and works on all screen sizes.
 
+Note: There is a daily limit on the number of requests due to usage limitations set by Google.
+
 ## Demo
 
 ![Screenshot](./media/screenshot.png)

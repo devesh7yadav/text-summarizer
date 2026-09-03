@@ -37,7 +37,7 @@ function MainPage() {
         } else{
             try {
                 setIsLoading(true);
-                const response = await fetch("http://localhost:5001/summarize", {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/summarize`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
@@ -106,7 +106,7 @@ function MainPage() {
 
         let y = margin;
 
-        //Starts at the top, writes a line, moves down, reaches end of page, adds a new page, restarts at top
+        //Starts at the top, writes a line, moves down, reaches end of page, adds a new page, restarts at the top
         for (let i = 0; i < lines.length; i++){
             if (y > pageHeight - margin) {
                 doc.addPage();
